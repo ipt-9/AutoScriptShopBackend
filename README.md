@@ -3,6 +3,10 @@
 ## Datenbankwahl
 Als Datenbank wird das in Plesk integrierte Datenbankhosting genutzt. Die Datenbank ist MariaDB. Der grund dafür ist dass wir uns dann keine gedanken mehr über das Hosting der Datenbank machen müssen. 
 
+## Datenbank Aufbau
+https://dbdiagram.io/d/Autosccriptshop-65e9bad3b1f3d4062c5e6c37
+
+
 ## Schnittstellen
 
 ### Products Database
