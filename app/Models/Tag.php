@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Task_Tags extends Model
+class Tag extends Model
 {
     use HasFactory;
 
-    public function tags()
+    public function products()
     {
-        return $this->hasMany(Tags::class);
+        return $this->belongsToMany(Product::class);
     }
 }
