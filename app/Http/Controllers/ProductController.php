@@ -15,8 +15,8 @@ class ProductController extends Controller
     {
         return Product::find($id);
     }
-    public function search(Request $request)
+    public function search(string $request)
     {
-        return Product::search($request->search)->get();
+        return Product::search($request)->get();
     }
 }

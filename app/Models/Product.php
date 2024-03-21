@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Laravel\Scout\Searchable;
 
 class Product extends Model
 {
     use HasFactory;
+    use Searchable;
 
     public function user()
     {
@@ -19,9 +22,9 @@ class Product extends Model
         return $this->belongsToMany(Order::class);
     }
 
-    public function tags()
+    public function tags(): BelongsToMany
     {
-        return $this->hasMany(Tag::class);
+        return $this->belongsToMany(Tag::class,"product_tags");
     }
 
     public function pictures()
