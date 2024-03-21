@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId("product_id");
             $table->string("url");
             $table->text("alt_text");
-
+            $table->timestamps();
         });
     }
 
