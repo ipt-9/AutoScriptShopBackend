@@ -10,7 +10,7 @@ https://dbdiagram.io/d/Autosccriptshop-65e9bad3b1f3d4062c5e6c37
 ## Schnittstellen
 
 ### Products Database
-* Get all Products
+* Get all Products  backend.auto-script-shop-bmsd21a.bbzwinf.ch/api/products
 * Set A Product(Name, Tags, Description, File)
 * Get Product by Id
 * Search for Products
