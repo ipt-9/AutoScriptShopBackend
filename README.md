@@ -31,7 +31,9 @@ https://dbdiagram.io/d/Autosccriptshop-65e9bad3b1f3d4062c5e6c37
 
 ### Taskboard Database
 * Get all Tasks
+  * backend.auto-script-shop-bmsd21a.bbzwinf.ch/api/tasks
 * Get Task by Id
+  * backend.auto-script-shop-bmsd21a.bbzwinf.ch/api/tasks/id/{id}
 * Search for Task
 * Create Task
 * Filter Tasks
