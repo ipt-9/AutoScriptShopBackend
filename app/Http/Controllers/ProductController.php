@@ -21,6 +21,12 @@ class ProductController extends Controller
     }
     public function create(Request $request)
     {
-        //
+        return $request->validate([
+            'title'=>'required|string|max:255',
+            'body'=>'required|string',
+            'features'=>'required|string',
+            'price'=>'required|numeric',
+            'rating'=>'numeric'
+        ]);
     }
 }
