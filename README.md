@@ -11,8 +11,9 @@ https://dbdiagram.io/d/Autosccriptshop-65e9bad3b1f3d4062c5e6c37
 
 ### Products Database
 * Get all Products
-* Set A Product(Name, Tags, Description, File)
+    * backend.auto-script-shop-bmsd21a.bbzwinf.ch/api/products
 * Get Product by Id
+    * backend.auto-script-shop-bmsd21a.bbzwinf.ch/api/products/id/{id}
 * Search for Products
 * Create Product
 * Filter Products

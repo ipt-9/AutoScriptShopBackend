@@ -9,8 +9,5 @@ class Task extends Model
 {
     use HasFactory;
 
-    public function task_tags()
-    {
-        return $this->hasMany(Task_Tag::class);
-    }
+    
 }
