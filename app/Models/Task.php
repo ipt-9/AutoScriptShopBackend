@@ -4,10 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Task extends Model
 {
     use HasFactory;
 
-    
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany(Product::class,"task_tags");
+    }
+    public function owner()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function worker()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+
 }
