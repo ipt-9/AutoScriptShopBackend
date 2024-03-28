@@ -10,7 +10,7 @@ use Laravel\Scout\Searchable;
 class Product extends Model
 {
     use HasFactory;
-    use Searchable;
+    //use Searchable;
 
     public function user()
     {
@@ -19,7 +19,7 @@ class Product extends Model
 
     public function orders()
     {
-        return $this->belongsToMany(Order::class);
+        return $this->belongsToMany(Order::class,"products_in_orders");
     }
 
     public function tags(): BelongsToMany

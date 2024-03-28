@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string("title");
             $table->text("body");
             $table->foreignId("owner_id");
-            $table->foreignId("worker_id");
+            $table->foreignId("worker_id")->default(0);
             $table->string("status");
             $table->integer("reward");
             $table->integer("views");
