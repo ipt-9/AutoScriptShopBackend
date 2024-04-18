@@ -11,6 +11,7 @@ class ProductController extends Controller
     {
         return Product::get();
     }
+
     public function findById(int $id)
     {
         return Product::find($id);
@@ -19,14 +20,26 @@ class ProductController extends Controller
     {
         return Product::search($request)->get();
     }
-    public function create(Request $request)
+    public function store(Request $request)
     {
-        return $request->validate([
+        $product = new Product();
+        $product -> fill($request->validate([
+            'user_id'=>'required',
             'title'=>'required|string|max:255',
             'body'=>'required|string',
             'features'=>'required|string',
             'price'=>'required|numeric',
-            'rating'=>'numeric'
-        ]);
+            'rating'=>'numeric',
+            'script'=>'required',
+        ]));
+        $product -> fill(['rating'=>'0']);
+        $product->save();
+            ;
+        return response()->json([
+            'status' => true,
+            'message' => "Product Created successfully!",
+            'product' => $product
+        ], 200);
+
     }
 }

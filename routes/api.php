@@ -24,7 +24,7 @@ Route::prefix('/products')->group(function () {
     Route::get('', [ProductController::class, 'index']);
     Route::get('/id/{id}', [ProductController::class, 'findById']);
     Route::get('/search/{request}', [ProductController::class, 'search']);
-    Route::post('/create', [ProductController::class, 'create']);
+    Route::post('/create', [ProductController::class, 'store']);
 });
 
 Route::prefix("/tasks")->group(function (){
