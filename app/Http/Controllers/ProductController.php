@@ -16,9 +16,13 @@ class ProductController extends Controller
     {
         return Product::find($id);
     }
-    public function search(string $request)
+    public function search(Request $request)
     {
-        return Product::search($request)->get();
+        return response()->json([
+        'product' => $request->get("title")
+    ], 200);
+        //$request .= "%";
+        //return Product::where($request)->get();
     }
     public function store(Request $request)
     {

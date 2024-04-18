@@ -10,7 +10,7 @@ use Laravel\Scout\Searchable;
 class Product extends Model
 {
     use HasFactory;
-    //use Searchable;
+    use Searchable;
 
     public function user()
     {
