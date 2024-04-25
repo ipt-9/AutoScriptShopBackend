@@ -23,6 +23,7 @@ class ProductController extends Controller
         $title .= $request->get("title");
         $title .= "%";
         $rating = "%";
+        $products = [];
         $rating .= $request->get("rating");
         $raw_tags = $request->get("tags");
         if($raw_tags == null){
@@ -42,7 +43,7 @@ class ProductController extends Controller
         }
 
 
-        return $products;
+        return $tags;
 
 
     }
