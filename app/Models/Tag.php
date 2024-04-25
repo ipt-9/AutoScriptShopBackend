@@ -12,7 +12,7 @@ class Tag extends Model
 
     public function products(): BelongsToMany
     {
-        return $this->belongsToMany(Product::class,"product_tags");
+        return $this->belongsToMany(Product::class,"product_tag");
     }
     public function tasks(): BelongsToMany
     {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -23,11 +24,26 @@ class ProductController extends Controller
         $title .= "%";
         $rating = "%";
         $rating .= $request->get("rating");
-        /*return response()->json([
-        'product' => $title
-    ], 200);*/
-        return Product::where("title","like",$title)->where("rating","like",$rating)->get();
-        //$request .= "%";
+        $test = $request->get("tags");
+        if($test == null){
+            $tags_from_request[]="%";
+        }
+        else{
+        $tags_from_request = explode(",",$test);
+        }
+                $tags=  Tag::where("tag","like",$tags_from_request)->get();
+
+        foreach ($tags as $tag){
+             $tagproducts = $tag->belongsToMany(Product::class)->where("title","like",$title)->where("rating","like",$rating)->get();
+
+             foreach ($tagproducts as $tagproduct){
+                 $products[] = $tagproduct;
+             }
+        }
+
+
+        return $products;
+
 
     }
     public function store(Request $request)
