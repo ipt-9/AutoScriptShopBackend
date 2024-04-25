@@ -34,5 +34,6 @@ Route::prefix("/tasks")->group(function (){
 });
 
 Route::prefix("/user")->group(function (){
+    Route::post("/create",[\App\Http\Controllers\UserController::class,"store"]);
     Route::post("/login",[LoginController::class,"authenticate"]);
 });
