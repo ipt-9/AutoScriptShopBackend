@@ -18,11 +18,17 @@ class ProductController extends Controller
     }
     public function search(Request $request)
     {
-        return response()->json([
-        'product' => $request->get("title")
-    ], 200);
+        $title = "%";
+        $title .= $request->get("title");
+        $title .= "%";
+        $rating = "%";
+        $rating .= $request->get("rating");
+        /*return response()->json([
+        'product' => $title
+    ], 200);*/
+        return Product::where("title","like",$title)->where("rating","like",$rating)->get();
         //$request .= "%";
-        //return Product::where($request)->get();
+
     }
     public function store(Request $request)
     {
