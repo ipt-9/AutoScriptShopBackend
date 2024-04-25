@@ -24,12 +24,12 @@ class ProductController extends Controller
         $title .= "%";
         $rating = "%";
         $rating .= $request->get("rating");
-        $test = $request->get("tags");
-        if($test == null){
+        $raw_tags = $request->get("tags");
+        if($raw_tags == null){
             $tags_from_request[]="%";
         }
         else{
-        $tags_from_request = explode(",",$test);
+        $tags_from_request = explode(",",$raw_tags);
         }
                 $tags=  Tag::where("tag","like",$tags_from_request)->get();
 
