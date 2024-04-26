@@ -19,12 +19,33 @@ class ProductController extends Controller
     }
     public function search(Request $request)
     {
+        $products = [];
+
         $title = "%";
         $title .= $request->get("title");
         $title .= "%";
-        $rating = "%";
-        $products = [];
-        $rating .= $request->get("rating");
+
+        $minprice = $request->get("minprice");
+        if($minprice == null){
+            $minprice="0";
+        }
+        $maxprice = $request->get("maxprice");
+        if($maxprice == null){
+            $maxprice= Product::get()->sortByDesc('price')->first();
+            $maxprice = $maxprice["price"];
+
+        }
+
+        $minrating = $request->get("minrating");
+        if($minrating == null){
+            $minrating="0";
+        }
+        $maxrating = $request->get("maxrating");
+        if($maxrating == null){
+            $maxrating="10";
+        }
+
+
         $raw_tags = $request->get("tags");
         if($raw_tags == null){
             $tags_from_request[]="%";
@@ -35,7 +56,7 @@ class ProductController extends Controller
                 $tags=  Tag::where("tag","like",$tags_from_request)->get();
 
         foreach ($tags as $tag){
-             $tagproducts = $tag->belongsToMany(Product::class)->where("title","like",$title)->where("rating","like",$rating)->get();
+             $tagproducts = $tag->belongsToMany(Product::class)->where("title","like",$title)->whereBetween("rating",[$minrating,$maxrating])->whereBetween('price', [$minprice, $maxprice])->get();
 
              foreach ($tagproducts as $tagproduct){
                  $products[] = $tagproduct;
@@ -43,7 +64,7 @@ class ProductController extends Controller
         }
 
 
-        return $tags;
+        return $products;
 
 
     }

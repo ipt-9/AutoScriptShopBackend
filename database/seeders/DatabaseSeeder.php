@@ -28,6 +28,8 @@ class DatabaseSeeder extends Seeder
             'username' => 'Test User',
              'email' => 'test@example.com',
          ]);
+        Tag::factory()
+            ->count(1)->has(Product::factory()->count(2)->set(key:'user_id', value: 1 ))->create([ 'tag'=>"hello"]);
 
         User::factory()
             ->count(10)
