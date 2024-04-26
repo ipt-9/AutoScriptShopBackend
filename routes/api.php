@@ -31,6 +31,7 @@ Route::prefix('/products')->group(function () {
 Route::prefix("/tasks")->group(function (){
    Route::get("",[TaskController::class,"index"]);
     Route::get('/id/{id}', [TaskController::class, 'show']);
+    Route::get('/search', [TaskController::class, 'search']);
 });
 
 Route::prefix("/user")->group(function (){
