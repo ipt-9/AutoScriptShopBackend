@@ -15,7 +15,9 @@ https://dbdiagram.io/d/Autosccriptshop-65e9bad3b1f3d4062c5e6c37
 * Get Product by Id
     * backend.auto-script-shop-bmsd21a.bbzwinf.ch/api/products/id/{id}
 * Search for Products
-      *backend.auto-script-shop-bmsd21a.bbzwinf.ch/api/products/search?title={title}&maxrating={maxrating}&minrating={minrating}&tags={tag1,tag2...}&minprice={minprice}&maxprice={maxprice}
+  
+      * backend.auto-script-shop-bmsd21a.bbzwinf.ch/api/products/search?title={title}&maxrating={maxrating}&minrating={minrating}&tags={tag1,tag2...}&minprice={minprice}&maxprice={maxprice}
+  
       note: alles nach /search ist optional
 * Create Product
 
