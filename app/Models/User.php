@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Testing\Assert;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -15,10 +16,15 @@ class User extends Authenticatable
     public function products()
     {
         return $this->hasMany(Product::class);
+
+    }
+    public function shippingaddresses()
+    {
+        return $this->hasMany(Shippingaddress::class);
     }
     public function tasks()
     {
-        return $this->hasMany(Product::class, "owner_id");
+        return $this->hasMany(Task::class, "owner_id");
     }
 
     public function orders()

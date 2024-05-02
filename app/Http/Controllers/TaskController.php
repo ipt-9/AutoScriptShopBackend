@@ -82,12 +82,14 @@ class TaskController extends Controller
             $request->validate([
                 'title'=>'required|string|max:255',
                 'body'=>'required|string',
-                'status'=>'required|string',
                 'reward'=>'required|numeric',
-                'views'=>'numeric',
+
 
             ]));
         $task -> owner_id = $user['id'];
+        $task -> views = 0;
+        $task -> status = "open";
+
         $task -> fill(['rating'=>'0']);
         $task -> save();
         ;
