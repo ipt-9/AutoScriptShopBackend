@@ -12,6 +12,7 @@ class TaskController extends Controller
 {
     public function search(Request $request)
     {
+
         $requests = [];
 
         $title = "%";
@@ -27,6 +28,7 @@ class TaskController extends Controller
             $maxreward= Task::get()->sortByDesc('reward')->first();
             $maxreward = $maxreward["reward"];
 
+
         }
 
         $raw_tags = $request->get("tags");
@@ -39,7 +41,7 @@ class TaskController extends Controller
         $tags=  Tag::where("tag","like",$tags_from_request)->get();
 
         foreach ($tags as $tag){
-            $tagrequests = $tag->belongsToMany(Task::class)->where("title","like",$title)->whereBetween('reward', [$minreward, $maxreward])->get();
+             $tagrequests = $tag->belongsToMany(Task::class)->where("title","like",$title)->whereBetween('reward', [$minreward, $maxreward])->get();
 
             foreach ($tagrequests as $tagrequest){
                 $requests[] = $tagrequest;
