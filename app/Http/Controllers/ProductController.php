@@ -18,6 +18,7 @@ class ProductController extends Controller
         $product =Product::find($id);
 
         foreach ($product->pictures as $picture){
+            $picture;
 
         }
 
