@@ -9,6 +9,8 @@ class UserController extends Controller
 {
     public function store(Request $request)
     {
+
+
         // Validate the incoming request data
         $request->validate([
             'username' => 'required|string|max:255',
@@ -16,8 +18,10 @@ class UserController extends Controller
             'password' => 'required|string|min:8',
         ]);
 
+
         // Create a new user instance
         $user = new User();
+
         $user->username = $request->input('username');
         $user->email = $request->input('email');
         $user->firstname = $request->input('firstname');
@@ -26,6 +30,7 @@ class UserController extends Controller
         $user->updated_at = now();
         $user->created_at = now();
         $user->save();
+
         return response()->json(['message' => 'User created successfully'],201);
     }
 }

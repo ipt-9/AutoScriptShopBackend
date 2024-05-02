@@ -76,7 +76,26 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-         Task::create($request->all());
+        $user=(new LoginController())->checkauth($request);
+        $task = new Task();
+        $task -> fill(
+            $request->validate([
+                'title'=>'required|string|max:255',
+                'body'=>'required|string',
+                'status'=>'required|string',
+                'reward'=>'required|numeric',
+                'views'=>'numeric',
+
+            ]));
+        $task -> owner_id = $user['id'];
+        $task -> fill(['rating'=>'0']);
+        $task -> save();
+        ;
+        return response()->json([
+            'status' => true,
+            'message' => "Task Created successfully!",
+            'product' => $task
+        ], 200);
     }
 
     /**

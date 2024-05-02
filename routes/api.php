@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -32,9 +33,10 @@ Route::prefix("/tasks")->group(function (){
    Route::get("",[TaskController::class,"index"]);
     Route::get('/id/{id}', [TaskController::class, 'show']);
     Route::get('/search', [TaskController::class, 'search']);
+    Route::post('/create', [TaskController::class, 'store'])->middleware('auth:sanctum');
 });
 
 Route::prefix("/user")->group(function (){
-    Route::post("/create",[\App\Http\Controllers\UserController::class,"store"]);
+    Route::post("/create",[UserController::class,"store"]);
     Route::post("/login",[LoginController::class,"authenticate"]);
 });
