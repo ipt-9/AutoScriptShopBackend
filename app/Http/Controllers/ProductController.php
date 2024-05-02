@@ -15,7 +15,15 @@ class ProductController extends Controller
 
     public function findById(int $id)
     {
-        return Product::find($id);
+        $product =Product::find($id);
+
+        foreach ($product->pictures as $picture){
+
+        }
+
+        return  $product;
+
+
     }
     public function search(Request $request)
     {
@@ -59,6 +67,12 @@ class ProductController extends Controller
              $tagproducts = $tag->belongsToMany(Product::class)->where("title","like",$title)->whereBetween("rating",[$minrating,$maxrating])->whereBetween('price', [$minprice, $maxprice])->get();
 
              foreach ($tagproducts as $tagproduct){
+                 $pictures=[];
+                 foreach ($tagproduct->pictures as $picture){
+
+                     $pictures[] = $picture;
+                 }
+
                  $products[] = $tagproduct;
              }
         }
