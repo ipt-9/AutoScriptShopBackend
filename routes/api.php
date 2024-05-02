@@ -22,7 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::prefix('/products')->group(function () {
-    Route::get('', [ProductController::class, 'search']);
+    Route::get('', [ProductController::class, 'index']);
     Route::get('/id/{id}', [ProductController::class, 'findById']);
     Route::get('/search', [ProductController::class, 'search']);
     Route::post('/create', [ProductController::class, 'store'])->middleware('auth:sanctum');
