@@ -33,5 +33,7 @@ https://dbdiagram.io/d/Autosccriptshop-65e9bad3b1f3d4062c5e6c37
 * Get Task by Id
   * backend.auto-script-shop-bmsd21a.bbzwinf.ch/api/tasks/id/{id}
 * Search for Task
+    * backend.auto-script-shop-bmsd21a.bbzwinf.ch/api/tasks/search?title={title}&tags={tag1,tag2,...}&minreward={minreward}&maxreward={maxreward}
+      note: alles nach /search ist optional      
 * Create Task
 * Filter Tasks
