@@ -12,7 +12,7 @@ class Task extends Model
 
     public function tags(): BelongsToMany
     {
-        return $this->belongsToMany(Product::class,"tag_task");
+        return $this->belongsToMany(Tag::class,"tag_task");
     }
     public function owner()
     {

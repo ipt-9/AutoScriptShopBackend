@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
 
         User::factory()
             ->count(10)
-            ->has(Task::factory()->set(key:'worker_id', value: 1 ))
+            ->has(Task::factory()->set(key:'worker_id', value: 1 )->has(Tag::factory()->count(2)))
             ->create();
 
 
