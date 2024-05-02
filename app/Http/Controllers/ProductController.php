@@ -15,17 +15,14 @@ class ProductController extends Controller
 
     public function findById(int $id)
     {
-        $product =Product::find($id);
+        $product=Product::find($id);
 
         foreach ($product->pictures as $picture){
             $picture;
-
         }
-
-        return  $product;
-
-
+        return $product;
     }
+
     public function search(Request $request)
     {
         $products = [];
@@ -54,15 +51,14 @@ class ProductController extends Controller
             $maxrating="10";
         }
 
-
         $raw_tags = $request->get("tags");
         if($raw_tags == null){
             $tags_from_request[]="%";
         }
         else{
-        $tags_from_request = explode(",",$raw_tags);
+            $tags_from_request = explode(",",$raw_tags);
         }
-                $tags=  Tag::where("tag","like",$tags_from_request)->get();
+        $tags=  Tag::where("tag","like",$tags_from_request)->get();
 
         foreach ($tags as $tag){
              $tagproducts = $tag->belongsToMany(Product::class)->where("title","like",$title)->whereBetween("rating",[$minrating,$maxrating])->whereBetween('price', [$minprice, $maxprice])->get();
@@ -77,17 +73,15 @@ class ProductController extends Controller
                  $products[] = $tagproduct;
              }
         }
-
-
         return $products;
-
-
     }
+
     public function store(Request $request)
     {
+        $user=(new LoginController())->checkauth($request);
         $product = new Product();
-        $product -> fill($request->validate([
-            'user_id'=>'required',
+        $product -> fill(
+            $request->validate([
             'title'=>'required|string|max:255',
             'body'=>'required|string',
             'features'=>'required|string',
@@ -95,14 +89,14 @@ class ProductController extends Controller
             'rating'=>'numeric',
             'script'=>'required',
         ]));
+        $product -> user_id = $user['id'];
         $product -> fill(['rating'=>'0']);
-        $product->save();
+        $product -> save();
             ;
         return response()->json([
             'status' => true,
             'message' => "Product Created successfully!",
             'product' => $product
         ], 200);
-
     }
 }
