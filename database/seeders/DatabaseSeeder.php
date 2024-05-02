@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Picture;
 use App\Models\Product;
+use App\Models\Shipping_address;
 use App\Models\Tag;
 use App\Models\Task;
 use App\Models\User;
@@ -39,6 +40,11 @@ class DatabaseSeeder extends Seeder
         User::factory()
             ->count(10)
             ->has(Task::factory()->set(key:'worker_id', value: 1 )->has(Tag::factory()->count(2)))
+            ->create();
+
+        User::factory()
+            ->count(10)
+            ->has(Shipping_address::factory())
             ->create();
 
 

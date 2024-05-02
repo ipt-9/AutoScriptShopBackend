@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string("housenumber");
             $table->string("place");
             $table->string("country");
-            $table->integer("postalcode");
+            $table->string("postalcode");
             $table->timestamps();
         });
     }
